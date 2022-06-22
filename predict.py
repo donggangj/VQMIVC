@@ -62,7 +62,7 @@ class Predictor(BasePredictor):
     def setup(self):
         """Load models"""
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        checkpoint_path = "VQMIVC-pretrained models/checkpoints/useCSMITrue_useCPMITrue_usePSMITrue_useAmpTrue/VQMIVC-model.ckpt-500.pt"
+        checkpoint_path = "VQMIVC-pretrained/checkpoints/useCSMITrue_useCPMITrue_usePSMITrue_useAmpTrue/VQMIVC-model.ckpt-500.pt"
         mel_stats = np.load("./mel_stats/stats.npy")
 
         encoder = Encoder(
