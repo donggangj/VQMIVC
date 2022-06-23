@@ -87,7 +87,7 @@ def export_onnx(params):
     os.makedirs(out_dir, exist_ok=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    vqmivc_model = VQMIVC(params.model_path)
+    vqmivc_model = VQMIVC(params.model_path).to(device)
     vqmivc_model.eval()
 
     mel_stats = np.load('./mel_stats/stats.npy')
@@ -185,4 +185,5 @@ if __name__ == "__main__":
     parser.add_argument('--converted_wav_path', '-c', type=str, default='converted')
     parser.add_argument('--model_path', '-m', type=str, required=True)
     args = parser.parse_args()
+    export_onnx(args)
     convert(args)
